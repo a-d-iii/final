@@ -10,6 +10,9 @@
 
 <style lang="scss">
 @use '@/scss/random' as *;
+=======
+@import '@/scss/random';
+
 </style>
 
 <script>

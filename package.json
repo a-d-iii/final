@@ -32,7 +32,7 @@
     "build-css": "sass ui/scss:ui/css",
     "build-ui": "vite build",
     "dev-ui": "vite",
-    "ui": "npx electron src/app.js",
-    "weather-ui": "npm run build-ui && npx electron --no-sandbox src/weather_ui.js"
+    "ui": "npx electron --no-sandbox src/app.js --",
+    "weather-ui": "npm run build-ui && npx electron --no-sandbox src/weather_ui.js --"
   }
 }

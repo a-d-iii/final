@@ -30,11 +30,19 @@
 </template>
 
 <style lang="scss">
+
 @use '@/scss/mixins' as *;
 @use '@/scss/animations' as *;
 @use '@/scss/scene' as *;
 @use '@/scss/time' as *;
 @use '@/scss/weather' as *;
+
+@import '@/scss/mixins';
+@import '@/scss/animations';
+@import '@/scss/scene';
+@import '@/scss/time';
+@import '@/scss/weather';
+
 
 .scene {
   height: 100%;
