@@ -126,6 +126,7 @@ export default {
           clickable: true
         }
       }
+    }
   },
   computed: {
     swiper() {
