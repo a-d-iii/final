@@ -9,7 +9,10 @@
 </template>
 
 <style lang="scss">
+@use '@/scss/random' as *;
+=======
 @import '@/scss/random';
+
 </style>
 
 <script>
@@ -36,7 +39,7 @@
     mounted () {
       this.randomBackground()
     },
-    beforeDestroy () {
+    beforeUnmount () {
       clearTimeout(this.timer)
     },
     methods: {
