@@ -65,7 +65,7 @@ function createWindow(weather) {
   win.webContents.on('did-finish-load', () => {
     console.log('[weather_ui] window loaded');
   });
-  ipcMain.once('renderer-ready', event => {
+
     console.log('[weather_ui] renderer ready, sending weather');
     event.reply('weather-data', weather);
   });

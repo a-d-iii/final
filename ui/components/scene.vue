@@ -129,7 +129,7 @@
         classes.push('time-' + this.data.scene_time)
         classes.push('scene-' + this.version)
 
-        if (this.data.thunderstorm) {
+        if (this.data.scene_thunderstorm) {
           classes.push('thunderstorm')
         }
 
