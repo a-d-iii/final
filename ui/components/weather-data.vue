@@ -84,9 +84,6 @@
 
 <script>
 
-  import 'swiper/css'
-  import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 
@@ -129,16 +126,6 @@ export default {
           clickable: true
         }
       }
-
-    },
-    beforeUnmount () {
-      window.removeEventListener('keyup', this.keyPress)
-    },
-    computed: {
-      swiper () {
-        return this.$refs.forecastSwiper.swiper
-
-    }
   },
   computed: {
     swiper() {

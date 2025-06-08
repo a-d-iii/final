@@ -47,10 +47,6 @@ export default {
     isNight() {
       return ['dawn','early-morning','night','midnight'].includes(this.time)
     },
-
-    beforeUnmount () {
-      clearTimeout(this.timer)
-
     showBird() {
       return this.random % 10 === 0 && this.isDay()
     },
