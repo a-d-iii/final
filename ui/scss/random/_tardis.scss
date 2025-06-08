@@ -5,7 +5,7 @@
     width: 100px;
     height: 100px;
     display: block;
-    background: url('@/images/tardis.gif') center center no-repeat;
+    background: url('../images/tardis.gif') center center no-repeat;
     background-size: contain;
     z-index: 90;
     animation: flying-tardis 6s linear;
