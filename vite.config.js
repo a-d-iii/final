@@ -19,6 +19,9 @@ export default defineConfig({
       }
     }
   },
+  optimizeDeps: {
+    include: ['swiper/modules']
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'ui')

@@ -78,3 +78,7 @@ This launches an Electron process that fetches the weather, builds the menubar p
 - **Sass reports `Can't find stylesheet to import`:** Use the `@use` syntax
   for SCSS modules (e.g. `@use '@/scss/mixins' as *;`) and ensure the `@`
   alias is configured in `vite.config.js`.
+- **Build fails with `[commonjs--resolver] Missing "./modules" specifier in
+  "swiper" package`:** Install dependencies again with `npm install` and ensure
+  the project uses Swiper v11 or later. If the error persists, delete your
+  `node_modules` folder and reinstall.
