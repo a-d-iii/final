@@ -2,7 +2,8 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  background: url('images/web-bg.png') top left repeat #030a13;
+  background: url('images/web-bg.png') center center no-repeat #030a13;
+  background-size: cover;
   color: #fff;
   height: 100vh;
   display: flex;
