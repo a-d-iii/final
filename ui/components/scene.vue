@@ -30,12 +30,12 @@
 </template>
 
 <style lang="scss">
-@import '~@/assets/scss/mixins';
-@import '~@/assets/scss/variables';
-@import '~@/assets/scss/animations';
-@import '~@/assets/scss/scene';
-@import '~@/assets/scss/time';
-@import '~@/assets/scss/weather';
+@import '@/scss/mixins';
+@import '@/scss/variables';
+@import '@/scss/animations';
+@import '@/scss/scene';
+@import '@/scss/time';
+@import '@/scss/weather';
 
 .scene {
   height: 100%;
@@ -54,22 +54,21 @@
 </style>
 
 <script>
-  import { EventBus } from '../../event-bus'
 
-  import clouds from '../weather/clouds'
-  import fog from '../weather/fog'
-  import lightning from '../weather/lightning'
-  import rain from '../weather/rain'
-  import snow from '../weather/snow'
-  import thunderstorm from '../weather/thunderstorm'
+  import clouds from './weather/clouds.vue'
+  import fog from './weather/fog.vue'
+  import lightning from './weather/lightning.vue'
+  import rain from './weather/rain.vue'
+  import snow from './weather/snow.vue'
+  import thunderstorm from './weather/thunderstorm.vue'
 
-  import moon from '../scenery/moon'
-  import mountains from '../scenery/mountains'
-  import sky from '../scenery/sky'
-  import stars from '../scenery/stars'
-  import sun from '../scenery/sun'
-  import trees from '../scenery/trees'
-  import random from '../scenery/random'
+  import moon from './scenery/moon.vue'
+  import mountains from './scenery/mountains.vue'
+  import sky from './scenery/sky.vue'
+  import stars from './scenery/stars.vue'
+  import sun from './scenery/sun.vue'
+  import trees from './scenery/trees.vue'
+  import random from './scenery/random.vue'
 
   export default {
     name: 'scene',
@@ -135,8 +134,6 @@
         }
 
         const classNames = classes.join(' ')
-
-        EventBus.$emit('setClassNames', classNames)
 
         return classNames
       }
