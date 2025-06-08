@@ -1,12 +1,13 @@
 
 import 'dotenv/config';
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import axios from 'axios';
 import util from './util.js';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import fs from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -21,12 +22,24 @@ if (!API_KEY) {
   process.exit(1);
 }
 
+const uiDir = path.join(__dirname, '../ui');
+const assetsFile = path.join(uiDir, 'dist', 'main.js');
+if (!fs.existsSync(assetsFile)) {
+  console.error('[weather_ui] UI assets missing. Run "npm run build-ui" first.');
+  process.exit(1);
+}
+
 async function fetchWeather(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
   console.log('[weather_ui] fetching', url);
-  const res = await axios.get(url);
-  console.log('[weather_ui] fetched weather');
-  return res.data;
+  try {
+    const res = await axios.get(url);
+    console.log('[weather_ui] fetched weather');
+    return res.data;
+  } catch (err) {
+    console.error('[weather_ui] failed to fetch weather:', err.message);
+    throw err;
+  }
 }
 
 const settings = {
@@ -50,8 +63,11 @@ function createWindow(weather) {
 
   win.loadFile(path.join(__dirname, '../ui/weather.html'));
   win.webContents.on('did-finish-load', () => {
-    console.log('[weather_ui] sending weather to renderer');
-    win.webContents.send('weather-data', weather);
+    console.log('[weather_ui] window loaded');
+  });
+  ipcMain.once('renderer-ready', event => {
+    console.log('[weather_ui] renderer ready, sending weather');
+    event.reply('weather-data', weather);
   });
 }
 
