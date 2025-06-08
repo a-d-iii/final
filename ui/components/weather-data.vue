@@ -84,8 +84,8 @@
 
 <script>
 
-import 'swiper/css'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 
 
 export default {
@@ -126,6 +126,7 @@ export default {
           clickable: true
         }
       }
+    }
   },
   computed: {
     swiper() {
