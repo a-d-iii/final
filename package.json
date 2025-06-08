@@ -10,18 +10,17 @@
     "feels": "^2.0.0",
     "moment-timezone": "^0.5.43",
     "suncalc": "^1.9.0",
-    "swiper": "^5.4.5",
+    "swiper": "^8.4.7",
     "tz-lookup": "^6.1.4",
-    "vue": "^2.7.14",
-    "vue-awesome-swiper": "4.1.1",
+    "vue": "^3.4.15",
+    "vue-awesome-swiper": "^5.0.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue2": "^2.0.3",
+    "@vitejs/plugin-vue": "^5.2.4",
     "electron": "^36.4.0",
     "sass": "^1.69.5",
-    "vite": "^6.3.5",
-    "vue-template-compiler": "^0.1.0"
+    "vite": "^6.3.5"
   },
   "scripts": {
     "parse": "node src/index.js",
