@@ -31,8 +31,8 @@
 
         const position = (Math.round((drop / this.rain) * 100) + randomFive)
         const bottom = (randomFive + randomFive - 1 + 100)
-        const delay = randomHundred
-        const duration = randomHundred
+        const delay = Math.max(randomHundred, 1)
+        const duration = Math.max(randomHundred, 1)
 
         let dropStyle = {
           bottom: `${bottom}%`,
@@ -49,7 +49,7 @@
         return dropStyle
       },
       rainDropStem () {
-        const random = Math.floor(Math.random() * 100)
+        const random = Math.max(Math.floor(Math.random() * 100), 1)
 
         return {
           animationDelay: `0.${random}s`,
