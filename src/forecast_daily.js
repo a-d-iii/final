@@ -23,7 +23,9 @@ if (!API_KEY) {
 
 async function fetch3hForecast(lat, lon, units) {
   const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`;
+  console.log('[forecast_daily] fetching', url);
   const res = await axios.get(url);
+  console.log('[forecast_daily] fetched forecast');
   return res.data;
 }
 
@@ -66,6 +68,7 @@ function summarizeDaily(raw, units) {
 }
 
 (async () => {
+  console.log('[forecast_daily] start');
   const raw = await fetch3hForecast(argv.lat, argv.lon, argv.units);
   const summary = summarizeDaily(raw, argv.units);
   console.log(JSON.stringify(summary, null, 2));

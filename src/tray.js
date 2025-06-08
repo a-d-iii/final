@@ -36,7 +36,9 @@ if (!fs.existsSync(assetsDir)) {
 
 async function fetchWeather(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+  console.log('[tray] fetching', url);
   const res = await axios.get(url);
+  console.log('[tray] fetched weather');
   return res.data;
 }
 
@@ -52,6 +54,7 @@ let tray = null;
 
 app.whenReady()
   .then(async () => {
+    console.log('[tray] app ready');
     const raw = await fetchWeather(argv.lat, argv.lon);
     const menubar = util.prepMenubarWeather(raw, settings);
 

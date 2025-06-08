@@ -22,7 +22,9 @@ if (!API_KEY) {
 
 async function fetchWeather(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+  console.log('[weather_ui] fetching', url);
   const res = await axios.get(url);
+  console.log('[weather_ui] fetched weather');
   return res.data;
 }
 
@@ -35,6 +37,7 @@ const settings = {
 let win;
 
 function createWindow(weather) {
+  console.log('[weather_ui] creating window');
   win = new BrowserWindow({
     width: 400,
     height: 400,
@@ -46,14 +49,17 @@ function createWindow(weather) {
 
   win.loadFile(path.join(__dirname, '../ui/weather.html'));
   win.webContents.on('did-finish-load', () => {
+    console.log('[weather_ui] sending weather to renderer');
     win.webContents.send('weather-data', weather);
   });
 }
 
 app.whenReady()
   .then(async () => {
+    console.log('[weather_ui] app ready');
     const raw = await fetchWeather(argv.lat, argv.lon);
     const parsed = util.parseWeather('location', raw, settings);
+    console.log('[weather_ui] weather parsed, creating window');
     createWindow(parsed);
   })
   .catch(err => {
@@ -62,6 +68,7 @@ app.whenReady()
   });
 
 app.on('window-all-closed', () => {
+  console.log('[weather_ui] window-all-closed');
   if (process.platform !== 'darwin') {
     app.quit();
   }

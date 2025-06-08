@@ -17,7 +17,9 @@ if (!API_KEY) {
 
 async function fetchWeather(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+  console.log('[menubar] fetching', url);
   const res = await axios.get(url);
+  console.log('[menubar] fetched weather');
   return res.data;
 }
 
@@ -30,6 +32,7 @@ const settings = {
 };
 
 (async () => {
+  console.log('[menubar] start');
   const raw = await fetchWeather(argv.lat, argv.lon);
   const menubar = util.prepMenubarWeather(raw, settings);
   console.log(JSON.stringify(menubar, null, 2));

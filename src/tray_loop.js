@@ -37,7 +37,9 @@ if (!fs.existsSync(assetsDir)) {
 
 async function fetchWeather(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+  console.log('[tray_loop] fetching', url);
   const res = await axios.get(url);
+  console.log('[tray_loop] fetched weather');
   return res.data;
 }
 
@@ -72,6 +74,7 @@ function buildIconPath(menubar) {
 
 async function updateTray() {
   try {
+    console.log('[tray_loop] updating tray');
     const raw = await fetchWeather(argv.lat, argv.lon);
     const menubar = util.prepMenubarWeather(raw, settings);
     const iconPath = buildIconPath(menubar);
@@ -91,6 +94,7 @@ async function updateTray() {
 
 app.whenReady()
   .then(() => {
+    console.log('[tray_loop] app ready');
     updateTray();
     setInterval(updateTray, argv.interval);
   })
