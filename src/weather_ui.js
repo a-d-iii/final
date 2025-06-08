@@ -92,14 +92,12 @@ function createWindow(weather) {
     console.log('[weather_ui] window loaded');
   });
 
- yxxubv-codex/fix-ui-rendering-issue-and-improve-error-logging
   const timeout = setTimeout(() => {
     console.error('[weather_ui] renderer did not signal ready');
   }, 5000);
 
   ipcMain.once('renderer-ready', event => {
     clearTimeout(timeout);
-main
     console.log('[weather_ui] renderer ready, sending weather');
     event.reply('weather-data', weather);
   });
