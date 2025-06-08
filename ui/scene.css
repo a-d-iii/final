@@ -1,0 +1,168 @@
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background: url('images/web-bg.png') top left repeat #030a13;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#scene {
+  position: relative;
+  width: 280px;
+  height: 480px;
+  margin: 0 auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  background: linear-gradient(to bottom, #2a3641 0%, #535f6a 100%);
+}
+
+.sun {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  margin-left: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff59d, #fbc02d);
+  box-shadow: 0 0 20px rgba(255, 223, 0, 0.8);
+  animation: rotateSun 20s linear infinite;
+  display: none;
+}
+
+@keyframes rotateSun {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.moon {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
+  border-radius: 50%;
+  background: #eee;
+  box-shadow: -5px 0 0 0 #ccc;
+  display: none;
+}
+
+.clouds {
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 60px 0 0 20px #fff, 120px 10px 0 30px #fff;
+  top: 40%;
+  left: -220px;
+  animation: move-clouds 30s linear infinite;
+  display: none;
+}
+
+@keyframes move-clouds {
+  from { transform: translateX(0); }
+  to { transform: translateX(120vw); }
+}
+
+.rain {
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  background: rgba(255,255,255,0.7);
+  top: 0;
+  left: 50%;
+  animation: drop 0.5s linear infinite;
+  display: none;
+}
+
+@keyframes drop {
+  0% { transform: translate(-50%, -20px); opacity: 0; }
+  75% { transform: translate(-50%, 100vh); opacity: 1; }
+  100% { transform: translate(-50%, 100vh); opacity: 1; }
+}
+
+.snow {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #fff;
+  border-radius: 50%;
+  top: 0;
+  left: 50%;
+  animation: snow 2s linear infinite;
+  display: none;
+}
+
+@keyframes snow {
+  0% { opacity: 0; }
+  70% { opacity: 1; }
+  80% { opacity: 0; }
+  100% { transform: translate(-50%, 100vh); opacity: 0; }
+}
+
+.fog {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('images/fog.png') center bottom repeat-x;
+  background-size: cover;
+  animation: move-fog 120s linear infinite;
+  display: none;
+}
+
+@keyframes move-fog {
+  from { background-position: 0 0; }
+  to   { background-position: 600px 0; }
+}
+
+.stars {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 0 0 2px #fff;
+  top: 0;
+  left: 0;
+  animation: stars 21s infinite;
+  opacity: 0.75;
+  display: none;
+}
+
+@keyframes stars {
+  0%   { opacity: 0; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.lightning {
+  position: absolute;
+  width: 4px;
+  height: 100px;
+  background: #ffeb3b;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flash 1s linear infinite;
+  display: none;
+}
+
+@keyframes flash {
+  0%, 90%, 100% { opacity: 0; }
+  92%, 98% { opacity: 1; }
+}
+
+#info {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 24px;
+}

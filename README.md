@@ -1,0 +1,61 @@
+diff --git a//dev/null b/standalone-parser/README.md
+index 0000000000000000000000000000000000000000..840797d249c2d32da0a05ac4d1795b6871449de6 100644
+--- a//dev/null
++++ b/standalone-parser/README.md
+@@ -0,0 +1,56 @@
++# Standalone Weather Parser
++
++This example demonstrates how to fetch weather data from OpenWeatherMap and parse it into the structured JSON format expected by the Weather Bar UI.
++
++## Setup
++
++1. Install dependencies:
++   ```bash
++   npm install
++   ```
++2. Set an OpenWeatherMap API key as an environment variable:
++   ```bash
++   export OPENWEATHER_API_KEY=your_key_here
++   ```
++   On Windows (Command Prompt):
++   ```cmd
++   set OPENWEATHER_API_KEY=your_key_here
++   ```
++3. Run the parser with latitude and longitude:
++   ```bash
++   node src/index.js --lat 40.7128 --lon -74.0060
++   ```
++   On Windows you can use backslashes:
++   ```cmd
++   node src\index.js --lat 40.7128 --lon -74.0060
++   ```
++
++The script prints the parsed JSON to stdout.
++
++## Menubar Icon Data
++
++You can also generate the tray icon payload that the main app uses:
++
++```bash
++node src/menubar.js --lat 40.7128 --lon -74.0060
++```
++On Windows:
++```cmd
++node src\menubar.js --lat 40.7128 --lon -74.0060
++```
++
++This prints a small JSON object containing the icon image ID, tray tooltip text, and the folder name (`day`, `night`, or `moon`).
++
++## Tray Icon Example
++
++A simple Electron script updates the system tray using the parsed data. Run it with `npx` so Electron is downloaded on demand:
++
++```bash
++npx electron src/tray.js --lat 40.7128 --lon -74.0060
++```
++On Windows the command is the same:
++```cmd
++npx electron src\tray.js --lat 40.7128 --lon -74.0060
++```
++
++This launches an Electron process that fetches the weather, builds the menubar payload, and sets a tray icon and tooltip based on those values.

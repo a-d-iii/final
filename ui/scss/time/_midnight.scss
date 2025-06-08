@@ -1,0 +1,51 @@
+.time-midnight {
+  .fog {
+    background: url('~@/assets/images/fog-night.png') center center repeat-x;
+    background-size: cover;
+  }
+  .thunderstorm-wrapper {
+    background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.5));
+  }
+  .sun-wrapper {
+    display: none;
+  }
+  .sky {
+    background: linear-gradient(to bottom, #2a3641 0%, #535f6a 100%);
+  }
+  .snow-wrapper {
+    background-color: rgba(255, 255, 255, 0.15);
+
+    .snowflake {
+      color: #2f3b48;
+    }
+  }
+  path.svg-mountain-1 {
+    fill: #171e24 !important;
+  }
+  path.svg-mountain-2 {
+    fill: #25313b !important;
+  }
+  path.svg-mountain-3 {
+    fill: #27343f !important;
+  }
+  path.svg-mountain-4 {
+    fill: #2f3c48 !important;
+  }
+  path.svg-mountain-5 {
+    fill: #3d4a56 !important;
+  }
+  path.svg-trees {
+    fill: #03090b !important;
+  }
+
+  .weather-data {
+		color: #FFF;
+    text-shadow: 0 0 8px #03090b
+	}
+
+	.cloud {
+		path {
+			fill: #2a323a;
+		}
+	}
+}

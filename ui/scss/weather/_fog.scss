@@ -1,0 +1,15 @@
+.fog {
+  background: url('~@/assets/images/fog.png') center center repeat-x;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 280px;
+  height: 175px;
+  background-size: cover;
+  z-index: 25;
+  transition: all 1s ease;
+	animation: move-fog 120s linear infinite;  
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform;
+}

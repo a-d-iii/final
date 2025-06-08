@@ -1,0 +1,36 @@
+{
+  "name": "standalone-weather-parser",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "d3-scale": "^4.0.2",
+    "feels": "^2.0.0",
+    "moment-timezone": "^0.5.43",
+    "suncalc": "^1.9.0",
+    "tz-lookup": "^6.1.4",
+    "vue": "^2.7.14",
+    "vue-awesome-swiper": "^5.0.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue2": "^2.0.3",
+    "sass": "^1.69.5",
+    "vite": "^6.3.5",
+    "vue-template-compiler": "^0.1.0"
+  },
+  "scripts": {
+    "parse": "node src/index.js",
+    "menubar": "node src/menubar.js",
+    "tray": "npx electron src/tray.js",
+    "tray-loop": "npx electron src/tray_loop.js",
+    "forecast": "node src/forecast.js",
+    "forecast-daily": "node src/forecast_daily.js",
+    "build-css": "sass ui/assets/scss:ui/assets/css",
+    "build-ui": "vite build",
+    "dev-ui": "vite",
+    "ui": "npx electron src/app.js",
+    "weather-ui": "npx electron src/weather_ui.js"
+  }
+}
