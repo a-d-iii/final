@@ -451,6 +451,7 @@ const getMoonsPosition = (latitude, longitude, timeZone) => {
 }
 
 const parseWeather = (key, data, settings) => {
+  console.log('[util] parsing weather for', key)
   moment.locale(settings.app_language)
 
   const timeZone = tzlookup(data.coord.lat, data.coord.lon)
@@ -519,6 +520,7 @@ const parseWeather = (key, data, settings) => {
     wind_speed: (settings.units_wind_speed === 'mph') ? mpsToMph(data.wind.speed) + ' MPH' : Math.round(data.wind.speed) + ' MPS'
   }
 
+  console.log('[util] parsed weather result:', weather)
   return weather
 }
 
