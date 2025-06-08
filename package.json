@@ -34,6 +34,6 @@
     "build-ui": "vite build",
     "dev-ui": "vite",
     "ui": "npx electron src/app.js",
-    "weather-ui": "npm run build-ui && npx electron src/weather_ui.js"
+    "weather-ui": "npm run build-ui && npx electron --no-sandbox src/weather_ui.js"
   }
 }
