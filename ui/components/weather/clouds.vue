@@ -39,7 +39,14 @@
     },
     methods: {
       cloudStyle (offset) {
-        const speed = (this.speed > 0) ? (100 - this.speed) + ((this.speed / 100) + offset) : 0
+        const minDuration = 20
+        let speed = (this.speed > 0)
+          ? (100 - this.speed) + ((this.speed / 100) + offset)
+          : minDuration + offset
+        if (speed < minDuration) {
+          speed = minDuration
+        }
+
         const direction = (this.direction >= 0 && this.direction <= 180) ? 'forward' : 'reverse'
         const position = (this.speed === 0) ? (-100 + (offset * 20)) : -100
 
@@ -50,7 +57,7 @@
           animation: `move-cloud ${speed}s linear infinite`,
           animationDelay: `${delay}s`,
           animationDirection: direction,
-          transform: `translateX(-${position}%)`
+          transform: `translateX(${position * -1}%)`
         }
       }
     }

@@ -40,10 +40,11 @@
       </div>
     </div>
 
-    <swiper
+    <Swiper
       class="weather-overview"
-      :options="swiperOption"
       ref="forecastSwiper"
+      v-bind="swiperOption"
+      :modules="swiperModules"
     >
       <swiper-slide
         class="forecast"
@@ -74,7 +75,7 @@
         ></div>
 
       </template>
-    </swiper>
+    </Swiper>
   </div>
 </template>
 
@@ -85,7 +86,9 @@
 <script>
 
 import 'swiper/css';
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination } from 'swiper/modules';
 
 
 export default {
@@ -125,7 +128,8 @@ export default {
           el: '.swiper-pagination',
           clickable: true
         }
-      }
+      },
+      swiperModules: [Pagination]
     }
   },
   computed: {
