@@ -1,3 +1,5 @@
+// Using @import rather than @use because the partials expect variables in the
+// global scope. Converting everything to @use would require large changes.
 @import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
 
 @use 'mixins' as *;
