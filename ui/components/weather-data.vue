@@ -64,12 +64,12 @@
 </template>
 
 <style lang="scss">
-@import '~@/assets/scss/weather-data';
+@import '@/scss/weather-data';
 </style>
 
 <script>
-  import 'swiper/dist/css/swiper.css'
-  import { swiper, swiperSlide } from 'vue-awesome-swiper'
+  import 'swiper/css/swiper.css'
+  import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 
   export default {
     name: 'weather-data',
@@ -159,8 +159,8 @@
       }
     },
     components: {
-      swiper,
-      swiperSlide
+      Swiper,
+      SwiperSlide
     }
   }
 </script>

@@ -11,7 +11,8 @@
     "suncalc": "^1.9.0",
     "tz-lookup": "^6.1.4",
     "vue": "^2.7.14",
-    "vue-awesome-swiper": "^5.0.1",
+    "vue-awesome-swiper": "^4.1.1",
+    "swiper": "^5.4.5",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
