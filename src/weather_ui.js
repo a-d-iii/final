@@ -11,6 +11,9 @@ import fs from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+
+
+
 const argvRaw = yargs(hideBin(process.argv))
   .options({
     lat: { type: 'number' },
@@ -29,7 +32,27 @@ if ((lat === undefined || isNaN(lat)) && positionalNumbers.length >= 2) {
 }
 
 if (isNaN(lat) || isNaN(lon)) {
+
   console.error('Latitude and longitude are required. Example: "npm run weather-ui -- 31.16667 77.58333"');
+  process.exit(1);
+}
+
+  console.error('Latitude and longitude are required. Pass with --lat and --lon or as positional arguments.');
+  process.exit(1);
+}
+
+const argvRaw = yargs(hideBin(process.argv)).options({
+  lat: { type: 'number' },
+  lon: { type: 'number' }
+}).argv;
+
+
+
+let lat = argvRaw.lat ?? parseFloat(argvRaw._[0]);
+let lon = argvRaw.lon ?? parseFloat(argvRaw._[1]);
+
+if (isNaN(lat) || isNaN(lon)) {
+  console.error('Latitude and longitude are required. Pass with --lat and --lon or as positional arguments.');
   process.exit(1);
 }
 
