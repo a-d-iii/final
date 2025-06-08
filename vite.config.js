@@ -9,7 +9,12 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
-      input: path.resolve(__dirname, 'ui/main.js')
+      input: path.resolve(__dirname, 'ui/main.js'),
+      output: {
+        entryFileNames: 'main.js',
+        chunkFileNames: '[name].js',
+        assetFileNames: 'assets/[name][extname]'
+      }
     }
   },
   resolve: {
