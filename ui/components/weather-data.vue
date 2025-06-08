@@ -5,9 +5,9 @@
 				<div class="current-temp">
 					{{ data.temp_actual }}<span class="degree">&deg;</span>
 				</div>
-				<div class="feels-like-temp">
-					{{ $t('page.preferences.feelsLike') }} {{ data.temp_feels_like }}<span class="degree">&deg;</span>
-				</div>
+                                <div class="feels-like-temp">
+                                        Feels Like {{ data.temp_feels_like }}<span class="degree">&deg;</span>
+                                </div>
 			</div>
 
       <div class="right">

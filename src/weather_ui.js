@@ -1,12 +1,13 @@
 
 import 'dotenv/config';
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import axios from 'axios';
 import util from './util.js';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import fs from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -21,12 +22,42 @@ if (!API_KEY) {
   process.exit(1);
 }
 
+const uiDir = path.join(__dirname, '../ui');
+
+function ensureAssets() {
+  const required = [
+    path.join(uiDir, 'dist', 'main.js'),
+    path.join(uiDir, 'dist', 'assets', 'main.css'),
+    path.join(uiDir, 'css', 'app.css'),
+    path.join(uiDir, 'css', 'weather-icons.css'),
+    path.join(uiDir, 'css', 'fontawesome-all.css'),
+    path.join(uiDir, 'font', 'weathericons-regular-webfont.woff'),
+    path.join(uiDir, 'webfonts', 'fa-solid-900.woff2')
+  ];
+  const missing = required.filter(p => !fs.existsSync(p));
+  if (missing.length) {
+    console.error('[weather_ui] Missing UI assets:');
+    for (const m of missing) {
+      console.error(' -', path.relative(uiDir, m));
+    }
+    console.error('Run "npm run build-ui" to generate them.');
+    process.exit(1);
+  }
+}
+
+ensureAssets();
+
 async function fetchWeather(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
   console.log('[weather_ui] fetching', url);
-  const res = await axios.get(url);
-  console.log('[weather_ui] fetched weather');
-  return res.data;
+  try {
+    const res = await axios.get(url);
+    console.log('[weather_ui] fetched weather');
+    return res.data;
+  } catch (err) {
+    console.error('[weather_ui] failed to fetch weather:', err.message);
+    throw err;
+  }
 }
 
 const settings = {
@@ -50,8 +81,17 @@ function createWindow(weather) {
 
   win.loadFile(path.join(__dirname, '../ui/weather.html'));
   win.webContents.on('did-finish-load', () => {
-    console.log('[weather_ui] sending weather to renderer');
-    win.webContents.send('weather-data', weather);
+    console.log('[weather_ui] window loaded');
+  });
+
+  const timeout = setTimeout(() => {
+    console.error('[weather_ui] renderer did not signal ready');
+  }, 5000);
+
+  ipcMain.once('renderer-ready', event => {
+    clearTimeout(timeout);
+    console.log('[weather_ui] renderer ready, sending weather');
+    event.reply('weather-data', weather);
   });
 }
 

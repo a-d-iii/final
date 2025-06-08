@@ -1,6 +1,8 @@
 
 const { ipcRenderer } = require('electron');
 
+ipcRenderer.send('renderer-ready');
+
 function show(id, condition) {
   const el = document.querySelector(id);
   if (el) {
