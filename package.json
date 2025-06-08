@@ -11,7 +11,7 @@
     "suncalc": "^1.9.0",
     "tz-lookup": "^6.1.4",
     "vue": "^2.7.14",
-    "vue-awesome-swiper": "^5.0.1",
+    "vue-awesome-swiper": "4.1.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
@@ -27,7 +27,7 @@
     "tray-loop": "npx electron src/tray_loop.js",
     "forecast": "node src/forecast.js",
     "forecast-daily": "node src/forecast_daily.js",
-    "build-css": "sass ui/assets/scss:ui/assets/css",
+    "build-css": "sass ui/scss:ui/css",
     "build-ui": "vite build",
     "dev-ui": "vite",
     "ui": "npx electron src/app.js",
