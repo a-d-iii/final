@@ -69,6 +69,7 @@ This launches an Electron process that fetches the weather, builds the menubar p
 
 - **Build fails with `Cannot find package '@vitejs/plugin-vue'`:** Run
   `npm install` to install missing dev dependencies before building.
+
 - **Sass reports `Can't find stylesheet to import`:** Use the `@use` syntax
   for SCSS modules (e.g. `@use '@/scss/mixins' as *;`) and ensure the `@`
   alias is configured in `vite.config.js`.
