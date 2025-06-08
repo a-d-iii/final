@@ -1,6 +1,6 @@
 
 import 'dotenv/config';
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import axios from 'axios';
@@ -63,8 +63,11 @@ function createWindow(weather) {
 
   win.loadFile(path.join(__dirname, '../ui/weather.html'));
   win.webContents.on('did-finish-load', () => {
-    console.log('[weather_ui] sending weather to renderer');
-    win.webContents.send('weather-data', weather);
+    console.log('[weather_ui] window loaded');
+  });
+  ipcMain.once('renderer-ready', event => {
+    console.log('[weather_ui] renderer ready, sending weather');
+    event.reply('weather-data', weather);
   });
 }
 
