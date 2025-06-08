@@ -13,7 +13,7 @@ body {
 
 #scene {
   position: relative;
-  width: 280px;
+  width: 400px;
   height: 480px;
   margin: 0 auto;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
