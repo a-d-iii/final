@@ -23,11 +23,37 @@ if (!API_KEY) {
 }
 
 const uiDir = path.join(__dirname, '../ui');
+
+
+function ensureAssets() {
+  const required = [
+    path.join(uiDir, 'dist', 'main.js'),
+    path.join(uiDir, 'dist', 'assets', 'main.css'),
+    path.join(uiDir, 'css', 'app.css'),
+    path.join(uiDir, 'css', 'weather-icons.css'),
+    path.join(uiDir, 'css', 'fontawesome-all.css'),
+    path.join(uiDir, 'font', 'weathericons-regular-webfont.woff'),
+    path.join(uiDir, 'webfonts', 'fa-solid-900.woff2')
+  ];
+  const missing = required.filter(p => !fs.existsSync(p));
+  if (missing.length) {
+    console.error('[weather_ui] Missing UI assets:');
+    for (const m of missing) {
+      console.error(' -', path.relative(uiDir, m));
+    }
+    console.error('Run "npm run build-ui" to generate them.');
+    process.exit(1);
+  }
+}
+
+ensureAssets();
+
 const assetsFile = path.join(uiDir, 'dist', 'main.js');
 if (!fs.existsSync(assetsFile)) {
   console.error('[weather_ui] UI assets missing. Run "npm run build-ui" first.');
   process.exit(1);
 }
+
 
 async function fetchWeather(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
@@ -66,6 +92,14 @@ function createWindow(weather) {
     console.log('[weather_ui] window loaded');
   });
 
+ yxxubv-codex/fix-ui-rendering-issue-and-improve-error-logging
+  const timeout = setTimeout(() => {
+    console.error('[weather_ui] renderer did not signal ready');
+  }, 5000);
+
+  ipcMain.once('renderer-ready', event => {
+    clearTimeout(timeout);
+main
     console.log('[weather_ui] renderer ready, sending weather');
     event.reply('weather-data', weather);
   });
