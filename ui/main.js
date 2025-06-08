@@ -12,9 +12,15 @@ new Vue({
   },
   mounted() {
     if (ipc) {
+      ipc.send('renderer-ready');
       ipc.on('weather-data', (event, data) => {
         this.weather = data
       })
+      setTimeout(() => {
+        if (!this.weather) {
+          console.error('weather data not received');
+        }
+      }, 5000);
     }
   }
 }).$mount('#app')
