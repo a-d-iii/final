@@ -82,3 +82,7 @@ This launches an Electron process that fetches the weather, builds the menubar p
   "swiper" package`:** Install dependencies again with `npm install` and ensure
   the project uses Swiper v11 or later. If the error persists, delete your
   `node_modules` folder and reinstall.
+- **npm warns about `vue-awesome-swiper` and `swiper` peer dependencies:**
+  This project uses the Vue components bundled with Swiper itself. Remove any
+  `vue-awesome-swiper` entry from your dependencies or lock file and keep
+  Swiper updated (v11 or later) to avoid the warning.
