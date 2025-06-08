@@ -12,9 +12,6 @@
     "tz-lookup": "^6.1.4",
     "vue": "^2.7.14",
     "vue-awesome-swiper": "^4.1.1",
-
-    "swiper": "5.4.5",
-=======
     "swiper": "^5.4.5",
     "yargs": "^17.7.2"
   },
@@ -22,7 +19,8 @@
     "@vitejs/plugin-vue2": "^2.0.3",
     "sass": "^1.69.5",
     "vite": "^6.3.5",
-    "vue-template-compiler": "^0.1.0"
+    "vue-template-compiler": "^0.1.0",
+    "electron": "^36.4.0"
   },
   "scripts": {
     "parse": "node src/index.js",
@@ -35,6 +33,6 @@
     "build-ui": "vite build",
     "dev-ui": "vite",
     "ui": "npx electron src/app.js",
-    "weather-ui": "npx electron src/weather_ui.js"
+    "weather-ui": "npm run build-ui && npx electron src/weather_ui.js"
   }
 }
