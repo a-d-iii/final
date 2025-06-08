@@ -57,18 +57,20 @@
 				</div>
       </swiper-slide>
 
-      <div class="swiper-pagination" slot="pagination" role="navigation" aria-label="Forecast Navigation"></div>
+      <template #pagination>
+        <div class="swiper-pagination" role="navigation" aria-label="Forecast Navigation"></div>
+      </template>
     </swiper>
 
   </div>
 </template>
 
 <style lang="scss">
-@import '~@/scss/weather-data';
+@use '@/scss/weather-data' as *;
 </style>
 
 <script>
-  import 'swiper/css/swiper.css'
+  import 'swiper/css'
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 
   export default {
@@ -132,7 +134,7 @@
         }
       }
     },
-    beforeDestroy () {
+    beforeUnmount () {
       window.removeEventListener('keyup', this.keyPress)
     },
     computed: {

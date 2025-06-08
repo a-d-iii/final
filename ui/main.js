@@ -1,26 +1,26 @@
-import Vue from 'vue'
+import { createApp, h } from 'vue'
 import WeatherApp from './WeatherApp.vue'
 
 const ipc = window.require ? window.require('electron').ipcRenderer : null
 
-new Vue({
+createApp({
   data() {
     return { weather: null }
   },
-  render(h) {
-    return h(WeatherApp, { props: { weather: this.weather } })
+  render() {
+    return h(WeatherApp, { weather: this.weather })
   },
   mounted() {
     if (ipc) {
-      ipc.send('renderer-ready');
+      ipc.send('renderer-ready')
       ipc.on('weather-data', (event, data) => {
         this.weather = data
       })
       setTimeout(() => {
         if (!this.weather) {
-          console.error('weather data not received');
+          console.error('weather data not received')
         }
-      }, 5000);
+      }, 5000)
     }
   }
-}).$mount('#app')
+}).mount('#app')
