@@ -6,7 +6,7 @@
     width: 200px;
     height: 200px;
     display: block;
-    background: url('~@/assets/images/girl-balloon.png') center center no-repeat;
+    background: url('@/images/girl-balloon.png') center center no-repeat;
     background-size: contain;
     z-index: 90;
     animation: girl-balloon 12s ease-out;
