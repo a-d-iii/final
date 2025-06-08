@@ -88,13 +88,10 @@
 
 <script>
 
-import 'swiper/css/bundle';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-=======
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination } from 'swiper/modules';
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination } from 'swiper/modules'
 
 
 
