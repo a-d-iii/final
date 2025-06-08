@@ -1,13 +1,14 @@
-@import 'scene/scene-1';
-@import 'scene/scene-2';
-@import 'scene/scene-3';
-@import 'scene/scene-4';
-@import 'scene/scene-5';
-@import 'scene/scene-6';
-@import 'scene/scene-7';
-@import 'scene/scene-8';
-@import 'scene/scene-9';
-@import 'scene/scene-10';
+@use 'scene/scene-1' as *;
+@use 'scene/scene-2' as *;
+@use 'scene/scene-3' as *;
+@use 'scene/scene-4' as *;
+@use 'scene/scene-5' as *;
+@use 'scene/scene-6' as *;
+@use 'scene/scene-7' as *;
+@use 'scene/scene-8' as *;
+@use 'scene/scene-9' as *;
+@use 'scene/scene-10' as *;
+@use 'variables' as *;
 
 .scene {
 	transform: translateZ(0);

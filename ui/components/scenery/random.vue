@@ -9,7 +9,7 @@
 </template>
 
 <style lang="scss">
-@import '@/scss/random';
+@use '@/scss/random' as *;
 </style>
 
 <script>

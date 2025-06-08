@@ -1,4 +1,5 @@
 
+import 'dotenv/config';
 import { app, Tray } from 'electron';
 import path from 'path';
 import { fileURLToPath } from 'url';
