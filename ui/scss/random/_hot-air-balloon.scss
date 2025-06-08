@@ -5,7 +5,7 @@
     width: 100px;
     height: 100px;
     display: block;
-    background: url('~@/assets/images/hot-air-balloon.png') center center no-repeat;
+    background: url('@/images/hot-air-balloon.png') center center no-repeat;
     background-size: contain;
     z-index: 90;
     animation: hot-air-balloon 15s linear;
@@ -15,7 +15,7 @@
 		will-change: transform;
 
     &.night {
-      background: url('~@/assets/images/hot-air-balloon-night.png') center center no-repeat;
+      background: url('@/images/hot-air-balloon-night.png') center center no-repeat;
       background-size: contain;
     }
   }
