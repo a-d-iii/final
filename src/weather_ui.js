@@ -11,10 +11,27 @@ import fs from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const argv = yargs(hideBin(process.argv)).options({
-  lat: { type: 'number', demandOption: true },
-  lon: { type: 'number', demandOption: true }
-}).argv;
+const argvRaw = yargs(hideBin(process.argv))
+  .options({
+    lat: { type: 'number' },
+    lon: { type: 'number' }
+  })
+  .parseSync();
+
+let { lat, lon, _ } = argvRaw;
+const positionalNumbers = _
+  .map(val => parseFloat(val))
+  .filter(n => !isNaN(n));
+
+if ((lat === undefined || isNaN(lat)) && positionalNumbers.length >= 2) {
+  lat = positionalNumbers[positionalNumbers.length - 2];
+  lon = positionalNumbers[positionalNumbers.length - 1];
+}
+
+if (isNaN(lat) || isNaN(lon)) {
+  console.error('Latitude and longitude are required. Example: "npm run weather-ui -- 31.16667 77.58333"');
+  process.exit(1);
+}
 
 const API_KEY = process.env.OPENWEATHER_API_KEY;
 if (!API_KEY) {
@@ -106,7 +123,7 @@ function createWindow(weather) {
 app.whenReady()
   .then(async () => {
     console.log('[weather_ui] app ready');
-    const raw = await fetchWeather(argv.lat, argv.lon);
+    const raw = await fetchWeather(lat, lon);
     const parsed = util.parseWeather('location', raw, settings);
     console.log('[weather_ui] weather parsed, creating window');
     createWindow(parsed);
