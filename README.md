@@ -43,9 +43,6 @@ This example demonstrates how to fetch weather data from OpenWeatherMap and pars
    ```cmd
    node src\index.js --lat 40.7128 --lon -74.0060
    ```
-6. To preview the animated scene in a regular browser, open `ui/demo.html`
-   after building the UI assets. This page loads sample weather data so all
-   effects are visible without Electron.
 
 The script prints the parsed JSON to stdout.
 
