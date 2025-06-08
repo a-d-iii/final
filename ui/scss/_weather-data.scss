@@ -1,7 +1,7 @@
-@import 'weather-data/main-weather';
-@import 'weather-data/current-conditions';
-@import 'weather-data/tab-set';
-@import 'weather-data/forecast';
+@use 'weather-data/main-weather' as *;
+@use 'weather-data/current-conditions' as *;
+@use 'weather-data/tab-set' as *;
+@use 'weather-data/forecast' as *;
 
 .weather-data {
 	position: absolute;

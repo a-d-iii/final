@@ -1,5 +1,5 @@
-@import 'random/bat';
-@import 'random/bird';
-@import 'random/girl-balloon';
-@import 'random/hot-air-balloon';
-@import 'random/tardis';
+@use 'random/bat' as *;
+@use 'random/bird' as *;
+@use 'random/girl-balloon' as *;
+@use 'random/hot-air-balloon' as *;
+@use 'random/tardis' as *;

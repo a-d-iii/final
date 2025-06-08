@@ -1,4 +1,5 @@
 
+import 'dotenv/config';
 import axios from 'axios';
 import util from './util.js';
 import yargs from 'yargs';

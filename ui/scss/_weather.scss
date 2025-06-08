@@ -1,8 +1,8 @@
-@import 'weather/clouds';
-@import 'weather/fog';
-@import 'weather/lightning';
-@import 'weather/moon';
-@import 'weather/rain';
-@import 'weather/snow';
-@import 'weather/sun';
-@import 'weather/thunderstorm';
+@use 'weather/clouds' as *;
+@use 'weather/fog' as *;
+@use 'weather/lightning' as *;
+@use 'weather/moon' as *;
+@use 'weather/rain' as *;
+@use 'weather/snow' as *;
+@use 'weather/sun' as *;
+@use 'weather/thunderstorm' as *;

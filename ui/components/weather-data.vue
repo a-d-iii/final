@@ -64,7 +64,7 @@
 </template>
 
 <style lang="scss">
-@import '@/scss/weather-data';
+@use '@/scss/weather-data' as *;
 </style>
 
 <script>
