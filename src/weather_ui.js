@@ -66,12 +66,6 @@ function createWindow(weather) {
     console.log('[weather_ui] window loaded');
   });
 
-  const timeout = setTimeout(() => {
-    console.error('[weather_ui] renderer did not signal ready');
-  }, 5000);
-
-  ipcMain.once('renderer-ready', event => {
-    clearTimeout(timeout);
     console.log('[weather_ui] renderer ready, sending weather');
     event.reply('weather-data', weather);
   });
