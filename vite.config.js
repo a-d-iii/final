@@ -5,6 +5,8 @@ import path from 'path'
 
 export default defineConfig({
   root: 'ui',
+  // Use relative paths so Electron can load assets via the file protocol
+  base: './',
   build: {
     outDir: 'dist',
     emptyOutDir: true,
