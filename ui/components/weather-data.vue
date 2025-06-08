@@ -40,10 +40,10 @@
       </div>
     </div>
 
-    <swiper
+    <Swiper
       class="weather-overview"
-      :options="swiperOption"
       ref="forecastSwiper"
+      v-bind="swiperOption"
     >
       <swiper-slide
         class="forecast"
@@ -74,7 +74,7 @@
         ></div>
 
       </template>
-    </swiper>
+    </Swiper>
   </div>
 </template>
 
@@ -84,8 +84,8 @@
 
 <script>
 
-import 'swiper/css';
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import 'swiper/css/bundle';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
 
 export default {
