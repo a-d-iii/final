@@ -64,11 +64,15 @@
       </swiper-slide>
 
       <template #pagination>
+
+        <div class="swiper-pagination" role="navigation" aria-label="Forecast Navigation"></div>
+
         <div
           class="swiper-pagination"
           role="navigation"
           aria-label="Forecast Navigation"
         ></div>
+
       </template>
     </swiper>
   </div>
@@ -79,8 +83,13 @@
 </style>
 
 <script>
+
+  import 'swiper/css'
+  import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+
 
 export default {
   name: 'weather-data',
@@ -120,6 +129,15 @@ export default {
           clickable: true
         }
       }
+
+    },
+    beforeUnmount () {
+      window.removeEventListener('keyup', this.keyPress)
+    },
+    computed: {
+      swiper () {
+        return this.$refs.forecastSwiper.swiper
+
     }
   },
   computed: {
@@ -139,6 +157,7 @@ export default {
         this.swipeLeft()
       } else if (event.which === 39) {
         this.swipeRight()
+
       }
     },
     swipeLeft() {

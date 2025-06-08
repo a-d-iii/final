@@ -47,6 +47,10 @@ export default {
     isNight() {
       return ['dawn','early-morning','night','midnight'].includes(this.time)
     },
+
+    beforeUnmount () {
+      clearTimeout(this.timer)
+
     showBird() {
       return this.random % 10 === 0 && this.isDay()
     },
@@ -55,6 +59,7 @@ export default {
     },
     showHotAirBalloon() {
       return this.random === 3
+
     },
     showGirlBalloon() {
       return this.random === 4 && this.isNight()
