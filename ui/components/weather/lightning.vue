@@ -59,7 +59,7 @@
     mounted () {
       this.makeLightening()
     },
-    beforeDestroy () {
+    beforeUnmount () {
       clearTimeout(this.timer)
     },
     methods: {

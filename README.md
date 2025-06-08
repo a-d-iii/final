@@ -64,3 +64,8 @@ npx electron src\tray.js --lat 40.7128 --lon -74.0060
 ```
 
 This launches an Electron process that fetches the weather, builds the menubar payload and sets a tray icon and tooltip based on those values.
+
+## Troubleshooting
+
+- **Build fails with `Cannot find package '@vitejs/plugin-vue'`:** Run
+  `npm install` to install missing dev dependencies before building.
