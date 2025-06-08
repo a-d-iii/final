@@ -33,7 +33,7 @@ This example demonstrates how to fetch weather data from OpenWeatherMap and pars
   This fetches live data and opens an Electron window showing the animated scene.
   To force all animations on for testing, add the `--demo` flag:
   ```bash
- npm run weather-ui -- --lat 40.7128 --lon -74.0060 --demo
+
   ```
 5. Run the parser with latitude and longitude:
    ```bash
@@ -43,14 +43,6 @@ This example demonstrates how to fetch weather data from OpenWeatherMap and pars
    ```cmd
    node src\index.js --lat 40.7128 --lon -74.0060
    ```
-6. To preview the animated scene in a regular browser, first build the UI
-   assets and then serve the `ui` folder over HTTP. The page uses ES modules,
-   so loading it directly with `file://` will fail. One quick option is:
-   ```bash
-   npx -y http-server ui -p 8081
-   ```
-   After running that command, open <http://localhost:8081/demo.html>. The
-   demo page loads sample data so all effects are visible without Electron.
 
 The script prints the parsed JSON to stdout.
 
