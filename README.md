@@ -33,7 +33,7 @@ This example demonstrates how to fetch weather data from OpenWeatherMap and pars
   This fetches live data and opens an Electron window showing the animated scene.
   To force all animations on for testing, add the `--demo` flag:
   ```bash
-
+  npm run weather-ui -- --lat 40.7128 --lon -74.0060 --demo
   ```
 5. Run the parser with latitude and longitude:
    ```bash
