@@ -68,15 +68,11 @@
       </swiper-slide>
 
       <template #pagination>
-
-        <div class="swiper-pagination" role="navigation" aria-label="Forecast Navigation"></div>
-
         <div
           class="swiper-pagination"
           role="navigation"
           aria-label="Forecast Navigation"
         ></div>
-
       </template>
     </Swiper>
   </div>
