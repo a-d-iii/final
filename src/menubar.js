@@ -28,8 +28,8 @@ const settings = {
   app_language: 'en',
   layout_current_temp: 'actual',
   app_launch_icon: 'both',
-  units_temperature: 'fahrenheit',
-  units_wind_speed: 'mph'
+  units_temperature: 'celsius',
+  units_wind_speed: 'kmh'
 };
 
 (async () => {

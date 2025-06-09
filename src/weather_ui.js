@@ -92,8 +92,8 @@ async function fetchWeather(lat, lon) {
 
 const settings = {
   app_language: 'en',
-  units_temperature: 'fahrenheit',
-  units_wind_speed: 'mph'
+  units_temperature: 'celsius',
+  units_wind_speed: 'kmh'
 };
 
 let win;
