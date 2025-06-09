@@ -17,7 +17,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const argvRaw = yargs(hideBin(process.argv))
   .options({
     lat: { type: 'number' },
-    lon: { type: 'number' }
+    lon: { type: 'number' },
+    demo: { type: 'boolean', default: false,
+      describe: 'Show all weather animations regardless of real data' }
   })
   .parseSync();
 
@@ -128,6 +130,21 @@ app.whenReady()
     console.log('[weather_ui] app ready');
     const raw = await fetchWeather(lat, lon);
     const parsed = util.parseWeather('location', raw, settings);
+    if (argvRaw.demo) {
+      console.log('[weather_ui] demo mode - enabling all animations');
+      Object.assign(parsed, {
+        scene_clouds: true,
+        scene_cloud_percent: 100,
+        scene_fog: true,
+        scene_lightning: true,
+        scene_moon: true,
+        scene_rain: 100,
+        scene_snow: true,
+        scene_stars: true,
+        scene_sun: true,
+        scene_thunderstorm: true
+      });
+    }
     console.log('[weather_ui] weather parsed, creating window');
     createWindow(parsed);
   })

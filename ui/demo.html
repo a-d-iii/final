@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Demo</title>
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/fontawesome-all.css">
+  <link rel="stylesheet" href="css/weather-icons.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="scene.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    if (location.protocol === 'file:') {
+      document.getElementById('app').innerHTML =
+        'Serve this folder over HTTP (e.g. <code>npx -y http-server ui -p 8081</code>)';
+    }
+  </script>
+  <link rel="stylesheet" href="dist/assets/main.css" />
+  <script>
+    // Sample data that turns on every effect so animations can be verified
+    window.demoWeather = {
+      city: 'Demo City',
+      condition_icon: 'wi-rain-mix',
+      condition_label: 'Demo',
+      precipitation: '0 IN',
+      sunrise: '6:00 AM',
+      sunset: '8:00 PM',
+      sun_next: 'sunrise',
+      wind_speed: '10 MPH',
+      wind_direction: 'N',
+      temp_actual: 72,
+      temp_feels_like: 72,
+
+      // Scene settings
+      scene_clouds: true,
+      scene_cloud_percent: 100,
+      scene_fog: true,
+      scene_lightning: true,
+      scene_moon: true,
+      scene_rain: 100,
+      scene_snow: true,
+      scene_stars: true,
+      scene_sun: true,
+      scene_thunderstorm: true,
+      scene_time: 'night',
+      scene_wind_speed: 15,
+      scene_wind_direction: 0,
+
+      // Additional positions for moon and sun
+      moon_angle: 0,
+      moon_fraction: 0.5,
+      moon_phase: 0.5,
+      moon_position: 0.2,
+      sun_position: 0.5
+    };
+  </script>
+  <script type="module" src="dist/main.js"></script>
+</body>
+</html>

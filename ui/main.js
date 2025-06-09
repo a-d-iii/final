@@ -2,6 +2,7 @@ import { createApp, h } from 'vue'
 import WeatherApp from './WeatherApp.vue'
 
 const ipc = window.require ? window.require('electron').ipcRenderer : null
+const demoWeather = window.demoWeather || null
 
 createApp({
   data() {
@@ -21,6 +22,9 @@ createApp({
           console.error('weather data not received')
         }
       }, 5000)
+    } else if (demoWeather) {
+      // Allow a static demo when not running in Electron
+      this.weather = demoWeather
     }
   }
 }).mount('#app')
