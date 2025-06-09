@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 $bxshadow-large: box-shadow(300);
 $bxshadow-medium: box-shadow(500);
 $bxshadow-small: box-shadow(800);
