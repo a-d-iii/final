@@ -39,6 +39,10 @@ const mpsToMph = (speed) => {
   return Math.round((speed * 3600 / 1610.3 * 1000) / 1000)
 }
 
+const mpsToKmh = (speed) => {
+  return Math.round(speed * 3.6)
+}
+
 const titleCase = (str) => {
   if (!str) {
     return ''
@@ -478,9 +482,8 @@ const parseWeather = (key, data, settings) => {
   const moonPosition = getMoonsPosition(data.coord.lat, data.coord.lon, timeZone)
   const thunderstorm = (code >= 200 && code <= 232)
 
-  const rainPrecipitation = (data.rain && data.rain['3h']) ? data.rain['3h'] : 0
-  const snowPrecipitation = (data.snow && data.snow['3h']) ? data.snow['3h'] : 0
-  const precipitation = mmToInches(rainPrecipitation + snowPrecipitation) + ' IN'
+  const humidity = data.main.humidity + ' %'
+  const currentTime = moment.tz(timeZone).format('h:mm A')
 
   let weather = {
     city: data.name,
@@ -493,7 +496,7 @@ const parseWeather = (key, data, settings) => {
     moon_name: moon.name,
     moon_phase: (moon.phase === 1) ? 0 : moon.phase,
     moon_position: moonPosition,
-    precipitation: precipitation,
+    humidity: humidity,
     scene_clouds: (getCloudPercent(code) > 0),
     scene_cloud_percent: getCloudPercent(code),
     scene_fog: (code === 741),
@@ -506,9 +509,10 @@ const parseWeather = (key, data, settings) => {
     scene_thunderstorm: thunderstorm,
     scene_time: getSceneTime(data.coord.lat, data.coord.lon, timeZone),
     scene_wind_direction: data.wind.deg,
-    scene_wind_speed: mpsToMph(data.wind.speed),
+    scene_wind_speed: (settings.units_wind_speed === 'kmh') ? mpsToKmh(data.wind.speed) : mpsToMph(data.wind.speed),
     sun_next: sunNext,
     sun_position: sunPosition,
+    current_time: currentTime,
     sunrise: moment.tz(data.sys.sunrise * 1000, timeZone).format('h:mm A'),
     sunset: moment.tz(data.sys.sunset * 1000, timeZone).format('h:mm A'),
     temp_actual: (settings.units_temperature === 'fahrenheit') ? kelvinToFahrenheit(data.main.temp) : kelvinToCelsius(data.main.temp),
@@ -517,7 +521,12 @@ const parseWeather = (key, data, settings) => {
     temp_min: (settings.units_temperature === 'fahrenheit') ? kelvinToFahrenheit(data.main.temp_min) : kelvinToCelsius(data.main.temp_min),
     time_zone: timeZone,
     wind_direction: degreesToDirection(data.wind.deg),
-    wind_speed: (settings.units_wind_speed === 'mph') ? mpsToMph(data.wind.speed) + ' MPH' : Math.round(data.wind.speed) + ' MPS'
+    wind_speed:
+      settings.units_wind_speed === 'mph'
+        ? mpsToMph(data.wind.speed) + ' MPH'
+        : settings.units_wind_speed === 'kmh'
+          ? mpsToKmh(data.wind.speed) + ' KMH'
+          : Math.round(data.wind.speed) + ' MPS'
   }
 
   console.log('[util] parsed weather result:', weather)
@@ -580,5 +589,6 @@ export default {
   titleCase,
   getWeatherIcon,
   mpsToMph,
+  mpsToKmh,
   getSceneTime
 }

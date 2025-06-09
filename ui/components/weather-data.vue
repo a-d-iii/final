@@ -12,15 +12,11 @@
 
       <div class="right">
         <div class="current-measure">
-          <i class="wi wi-raindrops"></i> {{ data.precipitation }}
+          <i class="wi wi-humidity"></i> {{ data.humidity }}
         </div>
 
-        <div class="current-measure" v-if="data.sun_next === 'sunset'">
-          <i class="wi wi-sunset"></i> {{ data.sunset }}
-        </div>
-
-        <div class="current-measure" v-if="data.sun_next === 'sunrise'">
-          <i class="wi wi-sunrise"></i> {{ data.sunrise }}
+        <div class="current-measure">
+          <i class="wi wi-time-4"></i> {{ data.current_time }}
         </div>
 
         <div class="current-measure">
@@ -101,7 +97,8 @@ export default {
           city: null,
           condition_icon: 'wi-na',
           condition_label: 'Unknown',
-          precipitation: null,
+          humidity: null,
+          current_time: null,
           sun_next: null,
           sunrise: null,
           sunset: null,

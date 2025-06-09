@@ -27,8 +27,8 @@ async function fetchForecast(lat, lon, days) {
 
 const settings = {
   app_language: 'en',
-  units_temperature: 'fahrenheit',
-  units_wind_speed: 'mph'
+  units_temperature: 'celsius',
+  units_wind_speed: 'kmh'
 };
 
 const todayLabel = new Date().toLocaleDateString('en', { weekday: 'short' });

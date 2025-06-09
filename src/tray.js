@@ -47,8 +47,8 @@ const settings = {
   layout_current_temp: 'actual',
   app_launch_icon: 'both',
   app_language: 'en',
-  units_temperature: 'fahrenheit',
-  units_wind_speed: 'mph'
+  units_temperature: 'celsius',
+  units_wind_speed: 'kmh'
 };
 
 let tray = null;
