@@ -12,18 +12,25 @@
 </head>
 <body>
   <div id="app"></div>
+
   <script>
     if (location.protocol === 'file:') {
       document.getElementById('app').innerHTML =
         'Serve this folder over HTTP (e.g. <code>npx -y http-server ui -p 8081</code>)';
     }
   </script>
+
+
   <link rel="stylesheet" href="dist/assets/main.css" />
   <script>
     // Sample data that turns on every effect so animations can be verified
     window.demoWeather = {
       city: 'Demo City',
+
       condition_icon: 'wi-rain-mix',
+
+      condition_icon: 'wi-day-sunny',
+
       condition_label: 'Demo',
       precipitation: '0 IN',
       sunrise: '6:00 AM',
@@ -45,7 +52,11 @@
       scene_stars: true,
       scene_sun: true,
       scene_thunderstorm: true,
+
       scene_time: 'night',
+
+      scene_time: 'noon',
+
       scene_wind_speed: 15,
       scene_wind_direction: 0,
 
