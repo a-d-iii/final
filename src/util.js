@@ -482,7 +482,8 @@ const parseWeather = (key, data, settings) => {
   const moonPosition = getMoonsPosition(data.coord.lat, data.coord.lon, timeZone)
   const thunderstorm = (code >= 200 && code <= 232)
 
-  const humidity = data.main.humidity + ' %'
+  const humidityPercent = data.main.humidity
+  const humidity = humidityPercent + ' %'
   const currentTime = moment.tz(timeZone).format('h:mm A')
 
   let weather = {
@@ -497,8 +498,8 @@ const parseWeather = (key, data, settings) => {
     moon_phase: (moon.phase === 1) ? 0 : moon.phase,
     moon_position: moonPosition,
     humidity: humidity,
-    scene_clouds: (getCloudPercent(code) > 0),
-    scene_cloud_percent: getCloudPercent(code),
+    scene_clouds: (humidityPercent > 0),
+    scene_cloud_percent: humidityPercent,
     scene_fog: (code === 741),
     scene_lightning: (code >= 200 && code <= 232),
     scene_moon: (sunPosition <= 0 && moonPosition >= -0.05),
