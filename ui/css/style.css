@@ -186,7 +186,7 @@
   left: -250px;
   width: 800px;
   height: 170px;
-  bottom: 20px;
+  bottom: 0;
 }
 .scene.scene-6 .mountain-2 svg {
   left: -200px;
@@ -234,9 +234,6 @@
   left: -500px;
   width: 800px;
   height: 220px;
-
-  bottom: -120px;
-
   bottom: -110px;
 
 }
@@ -306,7 +303,7 @@
 
 .scene.scene-10 .mountain-1 svg {
   left: -50px;
-  bottom: 10px;
+  bottom: 0;
 }
 .scene.scene-10 .mountain-2 svg {
   left: -40px;
@@ -316,7 +313,7 @@
 }
 .scene.scene-10 .mountain-4 svg {
   left: -20px;
-  bottom: 5px;
+  bottom: 0;
 }
 .scene.scene-10 .mountain-5 svg {
   left: -80px;
